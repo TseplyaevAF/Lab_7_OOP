@@ -23,11 +23,28 @@
       <height>41</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::DefaultContextMenu</enum>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
     <property name="text">
-     <string/>
+     <string>0</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::AutoText</enum>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="p_1">
+   <widget class="QPushButton" name="pushButton_1">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -50,7 +67,7 @@
      <string notr="true">buttonGroup</string>
     </attribute>
    </widget>
-   <widget class="QPushButton" name="p_2">
+   <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
       <x>60</x>
@@ -73,7 +90,7 @@
      <string notr="true">buttonGroup</string>
     </attribute>
    </widget>
-   <widget class="QPushButton" name="p_3">
+   <widget class="QPushButton" name="pushButton_3">
     <property name="geometry">
      <rect>
       <x>110</x>
@@ -96,7 +113,7 @@
      <string notr="true">buttonGroup</string>
     </attribute>
    </widget>
-   <widget class="QPushButton" name="p_4">
+   <widget class="QPushButton" name="pushButton_4">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -119,7 +136,7 @@
      <string notr="true">buttonGroup</string>
     </attribute>
    </widget>
-   <widget class="QPushButton" name="p_5">
+   <widget class="QPushButton" name="pushButton_5">
     <property name="geometry">
      <rect>
       <x>60</x>
@@ -142,7 +159,7 @@
      <string notr="true">buttonGroup</string>
     </attribute>
    </widget>
-   <widget class="QPushButton" name="p_6">
+   <widget class="QPushButton" name="pushButton_6">
     <property name="geometry">
      <rect>
       <x>110</x>
@@ -165,7 +182,7 @@
      <string notr="true">buttonGroup</string>
     </attribute>
    </widget>
-   <widget class="QPushButton" name="p_7">
+   <widget class="QPushButton" name="pushButton_7">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -188,7 +205,7 @@
      <string notr="true">buttonGroup</string>
     </attribute>
    </widget>
-   <widget class="QPushButton" name="p_8">
+   <widget class="QPushButton" name="pushButton_8">
     <property name="geometry">
      <rect>
       <x>60</x>
@@ -211,7 +228,7 @@
      <string notr="true">buttonGroup</string>
     </attribute>
    </widget>
-   <widget class="QPushButton" name="p_9">
+   <widget class="QPushButton" name="pushButton_9">
     <property name="geometry">
      <rect>
       <x>110</x>
@@ -234,7 +251,7 @@
      <string notr="true">buttonGroup</string>
     </attribute>
    </widget>
-   <widget class="QPushButton" name="p_0">
+   <widget class="QPushButton" name="pushButton_0">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -254,7 +271,7 @@
      <string>0</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="dot">
+   <widget class="QPushButton" name="pushButton_dot">
     <property name="geometry">
      <rect>
       <x>110</x>
@@ -274,7 +291,7 @@
      <string>.</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="div">
+   <widget class="QPushButton" name="pushButton_div">
     <property name="geometry">
      <rect>
       <x>160</x>
@@ -294,7 +311,7 @@
      <string>/</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="mul">
+   <widget class="QPushButton" name="pushButton_mul">
     <property name="geometry">
      <rect>
       <x>160</x>
@@ -314,7 +331,7 @@
      <string>*</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="sub">
+   <widget class="QPushButton" name="pushButton_sub">
     <property name="geometry">
      <rect>
       <x>160</x>
@@ -334,7 +351,7 @@
      <string>-</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="add">
+   <widget class="QPushButton" name="pushButton_add">
     <property name="geometry">
      <rect>
       <x>160</x>
@@ -354,7 +371,7 @@
      <string>+</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="equally">
+   <widget class="QPushButton" name="pushButton_equally">
     <property name="geometry">
      <rect>
       <x>210</x>
@@ -374,7 +391,7 @@
      <string>=</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="sin">
+   <widget class="QPushButton" name="pushButton_sin">
     <property name="geometry">
      <rect>
       <x>210</x>
@@ -394,7 +411,7 @@
      <string>sin</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="cos">
+   <widget class="QPushButton" name="pushButton_cos">
     <property name="geometry">
      <rect>
       <x>210</x>
@@ -414,7 +431,7 @@
      <string>cos</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="tan">
+   <widget class="QPushButton" name="pushButton_tan">
     <property name="geometry">
      <rect>
       <x>210</x>
@@ -434,7 +451,7 @@
      <string>tan</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="exp">
+   <widget class="QPushButton" name="pushButton_exp">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -450,7 +467,7 @@
      <string>EXP</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="ln">
+   <widget class="QPushButton" name="pushButton_ln">
     <property name="geometry">
      <rect>
       <x>60</x>
@@ -466,7 +483,7 @@
      <string>ln</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="yx">
+   <widget class="QPushButton" name="pushButton_yx">
     <property name="geometry">
      <rect>
       <x>110</x>
@@ -482,7 +499,7 @@
      <string>Yˣ</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="sqrt">
+   <widget class="QPushButton" name="pushButton_sqrt">
     <property name="geometry">
      <rect>
       <x>160</x>
@@ -498,7 +515,7 @@
      <string>√</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="x2">
+   <widget class="QPushButton" name="pushButton_x2">
     <property name="geometry">
      <rect>
       <x>210</x>
@@ -514,37 +531,64 @@
      <string>X²</string>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QPushButton" name="CE">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>160</x>
       <y>70</y>
-      <width>158</width>
-      <height>25</height>
+      <width>41</width>
+      <height>23</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QPushButton" name="CE">
-       <property name="autoFillBackground">
-        <bool>false</bool>
-       </property>
-       <property name="text">
-        <string>CE</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="C">
-       <property name="autoFillBackground">
-        <bool>false</bool>
-       </property>
-       <property name="text">
-        <string>C</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <property name="font">
+     <font>
+      <family>MS Gothic</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string>CE</string>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="C">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>70</y>
+      <width>41</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>MS Gothic</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string>C</string>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
