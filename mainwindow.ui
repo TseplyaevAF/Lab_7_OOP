@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Калькулятор</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="display">
@@ -534,7 +534,7 @@
    <widget class="QPushButton" name="CE">
     <property name="geometry">
      <rect>
-      <x>160</x>
+      <x>210</x>
       <y>70</y>
       <width>41</width>
       <height>23</height>
@@ -562,10 +562,10 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="C">
+   <widget class="QPushButton" name="erase">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>160</x>
       <y>70</y>
       <width>41</width>
       <height>23</height>
@@ -581,7 +581,7 @@
      <bool>false</bool>
     </property>
     <property name="text">
-     <string>C</string>
+     <string>→</string>
     </property>
     <property name="checkable">
      <bool>false</bool>
