@@ -14,13 +14,13 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::addLabel(QPushButton *button, QLabel *label) {
-    double all_numbers; // переменная для записи всех чисел
+    QString all_numbers; // переменная для записи всех чисел в строку
 
     if (label->text() == "0")
         label->setText(button->text());
     else {
-        all_numbers = (ui->display->text() + button->text()).toDouble();
-        label->setText(QString::number(all_numbers, 'g', 10));
+        all_numbers = (ui->display->text() + button->text());
+        label->setText(all_numbers);
     }
 }
 
@@ -97,4 +97,10 @@ void MainWindow::on_pushButton_dot_clicked()
     if (!(ui->display->text().contains('.'))) {
         ui->display->setText(ui->display->text() + ".");
     }
+}
+
+void MainWindow::on_pushButton_sign_clicked()
+{
+   double res = ui->display->text().toDouble() * (-1.0);
+   ui->display->setText(QString::number(res));
 }

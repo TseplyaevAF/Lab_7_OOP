@@ -550,7 +550,7 @@
      <bool>false</bool>
     </property>
     <property name="text">
-     <string>CE</string>
+     <string>C</string>
     </property>
     <property name="autoDefault">
      <bool>false</bool>
@@ -588,6 +588,22 @@
     </property>
     <property name="autoDefault">
      <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_sign">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>70</y>
+      <width>41</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string>±</string>
     </property>
    </widget>
   </widget>
