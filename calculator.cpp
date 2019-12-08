@@ -31,7 +31,7 @@ void Calculator::operator *=(double value1) {
 
 void Calculator::operator /=(double value1) {
     if (value1 == 0) throw divZero;
-    setValue(value + value1);
+    setValue(value / value1);
 }
 
 double Calculator::exprValue() {

@@ -79,6 +79,10 @@ void MainWindow::on_CE_clicked()
     if (num.getValue() != 0)
         num.setValue(0);
     ui->display->setText("0");
+    ui->labelHistory->setText("");
+    operation = "";
+    if (ui->labelERROR->text() == "E")
+        ui->labelERROR->setText("");
 }
 
 void MainWindow::on_erase_clicked()
@@ -103,4 +107,59 @@ void MainWindow::on_pushButton_sign_clicked()
 {
    double res = ui->display->text().toDouble() * (-1.0);
    ui->display->setText(QString::number(res));
+}
+
+void MainWindow::on_pushButton_add_clicked()
+{
+    num.setValue(ui->display->text().toDouble());
+    operation = "+";
+    ui->display->setText("0");
+}
+
+void MainWindow::checkOperation() {
+    if (operation == "+")
+        num += ui->display->text().toDouble();
+    if (operation == "-")
+        num -= ui->display->text().toDouble();
+    if (operation == "*")
+        num *= ui->display->text().toDouble();
+    if (operation == "/") {
+        if (ui->display->text().toDouble() == 0) {
+            ui->labelERROR->setText("E");
+            num.setValue(0);
+        } else
+        num /= ui->display->text().toDouble();
+    }
+}
+
+//void MainWindow::setHistory(QPushButton *button) {
+//    ui->labelHistory->setText(ui->labelHistory->text() + ui->display->text() + " " + button->text() + " ");
+//}
+
+void MainWindow::on_pushButton_equally_clicked()
+{
+    checkOperation();
+    ui->display->setText(QString::number(num.getValue()));
+    operation = "";
+}
+
+void MainWindow::on_pushButton_sub_clicked()
+{
+    num.setValue(ui->display->text().toDouble());
+    operation = "-";
+    ui->display->setText("0");
+}
+
+void MainWindow::on_pushButton_mul_clicked()
+{
+    num.setValue(ui->display->text().toDouble());
+    operation = "*";
+    ui->display->setText("0");
+}
+
+void MainWindow::on_pushButton_div_clicked()
+{
+    num.setValue(ui->display->text().toDouble());
+    operation = "/";
+    ui->display->setText("0");
 }

@@ -47,12 +47,28 @@ private slots:
 
     void on_pushButton_sign_clicked();
 
+    void on_pushButton_add_clicked();
+
+    void on_pushButton_equally_clicked();
+
+    void on_pushButton_sub_clicked();
+
+    void on_pushButton_mul_clicked();
+
+    void on_pushButton_div_clicked();
+
 private:
     Ui::MainWindow *ui;
     // переменная для вычислений
     Calculator num;
+    // переменная для определения операции
+    QString operation;
     // функция добавления текста на экран
     void addLabel(QPushButton *button,QLabel *label);
+    // функция для проверки операции
+    void checkOperation();
+    // функция записи операции в labelHistory
+    void setHistory(QPushButton *button);
 
 };
 #endif // MAINWINDOW_H
