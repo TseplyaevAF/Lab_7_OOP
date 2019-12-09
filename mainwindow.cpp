@@ -16,6 +16,11 @@ MainWindow::~MainWindow()
 void MainWindow::addLabel(QPushButton *button, QLabel *label) {
     QString all_numbers; // переменная для записи всех чисел в строку
 
+    if (flag) {
+        label->setText(button->text());
+        return;
+    }
+
     if (label->text() == "0")
         label->setText(button->text());
     else {
@@ -111,9 +116,11 @@ void MainWindow::on_pushButton_sign_clicked()
 
 void MainWindow::on_pushButton_add_clicked()
 {
+    ui->pushButton_add->setDefault(1);
+    flag = 1;
     num.setValue(ui->display->text().toDouble());
     operation = "+";
-    ui->display->setText("0");
+   // ui->display->setText("0");
 }
 
 void MainWindow::checkOperation() {
@@ -139,27 +146,38 @@ void MainWindow::checkOperation() {
 void MainWindow::on_pushButton_equally_clicked()
 {
     checkOperation();
+    ui->pushButton_add->setDefault(0);
+    ui->pushButton_sub->setDefault(0);
+    ui->pushButton_mul->setDefault(0);
+    ui->pushButton_div->setDefault(0);
     ui->display->setText(QString::number(num.getValue()));
     operation = "";
+    flag = 0;
 }
 
 void MainWindow::on_pushButton_sub_clicked()
 {
+    flag = 1;
+    ui->pushButton_sub->setDefault(1);
     num.setValue(ui->display->text().toDouble());
     operation = "-";
-    ui->display->setText("0");
+    //ui->display->setText("0");
 }
 
 void MainWindow::on_pushButton_mul_clicked()
 {
+    flag = 1;
+    ui->pushButton_mul->setDefault(1);
     num.setValue(ui->display->text().toDouble());
     operation = "*";
-    ui->display->setText("0");
+    //ui->display->setText("0");
 }
 
 void MainWindow::on_pushButton_div_clicked()
 {
+    flag = 1;
+    ui->pushButton_div->setDefault(1);
     num.setValue(ui->display->text().toDouble());
     operation = "/";
-    ui->display->setText("0");
+    //ui->display->setText("0");
 }

@@ -63,6 +63,7 @@ private:
     Calculator num;
     // переменная для определения операции
     QString operation;
+    bool flag = 0;
     // функция добавления текста на экран
     void addLabel(QPushButton *button,QLabel *label);
     // функция для проверки операции
