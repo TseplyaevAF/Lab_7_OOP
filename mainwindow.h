@@ -57,6 +57,16 @@ private slots:
 
     void on_pushButton_div_clicked();
 
+    void on_pushButton_exp_clicked();
+
+    void on_pushButton_ln_clicked();
+
+    void on_pushButton_yx_clicked();
+
+    void on_pushButton_sqrt_clicked();
+
+    void on_pushButton_x2_clicked();
+
 private:
     Ui::MainWindow *ui;
     // переменная для вычислений

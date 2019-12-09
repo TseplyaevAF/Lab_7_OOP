@@ -2,7 +2,7 @@
 
 Calculator::Calculator()
 {
-
+    value = 0;
 }
 
 Calculator::Calculator(double value1) {
@@ -44,7 +44,7 @@ double Calculator::sqrtValue() {
 }
 
 double Calculator::lnValue() {
-    if (value < 0) throw negativeNumber;
+    if (value <= 0) throw negativeNumber;
     return log(value);
 }
 

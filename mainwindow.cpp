@@ -18,6 +18,7 @@ void MainWindow::addLabel(QPushButton *button, QLabel *label) {
 
     if (flag) {
         label->setText(button->text());
+        flag = 0;
         return;
     }
 
@@ -126,16 +127,25 @@ void MainWindow::on_pushButton_add_clicked()
 void MainWindow::checkOperation() {
     if (operation == "+")
         num += ui->display->text().toDouble();
+
     if (operation == "-")
         num -= ui->display->text().toDouble();
+
     if (operation == "*")
         num *= ui->display->text().toDouble();
+
     if (operation == "/") {
         if (ui->display->text().toDouble() == 0) {
             ui->labelERROR->setText("E");
             num.setValue(0);
         } else
         num /= ui->display->text().toDouble();
+    }
+
+    if (operation == "pow") {
+       double res;
+       res = num.powValue(ui->display->text().toDouble());
+       num.setValue(res);
     }
 }
 
@@ -150,6 +160,7 @@ void MainWindow::on_pushButton_equally_clicked()
     ui->pushButton_sub->setDefault(0);
     ui->pushButton_mul->setDefault(0);
     ui->pushButton_div->setDefault(0);
+    ui->pushButton_yx->setDefault(0);
     ui->display->setText(QString::number(num.getValue()));
     operation = "";
     flag = 0;
@@ -180,4 +191,52 @@ void MainWindow::on_pushButton_div_clicked()
     num.setValue(ui->display->text().toDouble());
     operation = "/";
     //ui->display->setText("0");
+}
+
+void MainWindow::on_pushButton_exp_clicked()
+{
+    QString str;
+    str = ui->display->text();
+    num.setValue(str.toDouble());
+    ui->display->setText(QString::number(num.exprValue()));
+}
+
+void MainWindow::on_pushButton_ln_clicked()
+{
+    QString str;
+    str = ui->display->text();
+    num.setValue(str.toDouble());
+    if (num.getValue() <= 0) {
+        ui->labelERROR->setText("E");
+        return;
+    }
+    ui->display->setText(QString::number(num.lnValue()));
+}
+
+void MainWindow::on_pushButton_yx_clicked()
+{
+    ui->pushButton_yx->setDefault(1);
+    flag = 1;
+    num.setValue(ui->display->text().toDouble());
+    operation = "pow";
+}
+
+void MainWindow::on_pushButton_sqrt_clicked()
+{
+    QString str;
+    str = ui->display->text();
+    num.setValue(str.toDouble());
+    if (num.getValue() < 0) {
+        ui->labelERROR->setText("E");
+        return;
+    }
+    ui->display->setText(QString::number(num.sqrtValue()));
+}
+
+void MainWindow::on_pushButton_x2_clicked()
+{
+    QString str;
+    str = ui->display->text();
+    num.setValue(str.toDouble());
+    ui->display->setText(QString::number(num.sqrValue()));
 }
