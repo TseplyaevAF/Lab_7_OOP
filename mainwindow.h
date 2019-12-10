@@ -67,6 +67,12 @@ private slots:
 
     void on_pushButton_x2_clicked();
 
+    void on_pushButton_sin_clicked();
+
+    void on_pushButton_cos_clicked();
+
+    void on_pushButton_tan_clicked();
+
 private:
     Ui::MainWindow *ui;
     // переменная для вычислений

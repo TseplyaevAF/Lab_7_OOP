@@ -240,3 +240,27 @@ void MainWindow::on_pushButton_x2_clicked()
     num.setValue(str.toDouble());
     ui->display->setText(QString::number(num.sqrValue()));
 }
+
+void MainWindow::on_pushButton_sin_clicked()
+{
+    QString str;
+    str = ui->display->text();
+    num.setValue(str.toDouble());
+    ui->display->setText(QString::number(num.sinValue()));
+}
+
+void MainWindow::on_pushButton_cos_clicked()
+{
+    QString str;
+    str = ui->display->text();
+    num.setValue(str.toDouble());
+    ui->display->setText(QString::number(num.cosValue()));
+}
+
+void MainWindow::on_pushButton_tan_clicked()
+{
+    QString str;
+    str = ui->display->text();
+    num.setValue(str.toDouble());
+    ui->display->setText(QString::number(num.tgValue()));
+}
