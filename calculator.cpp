@@ -49,15 +49,16 @@ double Calculator::lnValue() {
 }
 
 double Calculator::sinValue() {
-    return sin(value);
+    return sin(value * M_PI/180); // вернуть значения в градусах
 }
 
 double Calculator::cosValue() {
-    return cos(value);
+    value = value * M_PI/180;
+    return cos(value); // вернуть значения в градусах
 }
 
 double Calculator::tgValue() {
-    return tan(value);
+    return tan(value * M_PI/180); // вернуть значения в градусах
 }
 
 double Calculator::powValue(double power) {

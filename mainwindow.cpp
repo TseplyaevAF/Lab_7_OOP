@@ -87,8 +87,7 @@ void MainWindow::on_CE_clicked()
     ui->display->setText("0");
     ui->labelHistory->setText("");
     operation = "";
-    if (ui->labelERROR->text() == "E")
-        ui->labelERROR->setText("");
+    ui->labelERROR->setText("");
 }
 
 void MainWindow::on_erase_clicked()
@@ -134,9 +133,21 @@ void MainWindow::checkOperation() {
     if (operation == "*")
         num *= ui->display->text().toDouble();
 
+//    try {
+//        if (operation == "/") {
+//            num /= ui->display->text().toDouble();
+//            correctly = 1;
+//        }
+//    } catch (Calculator::ERRORS e) {
+//        if (e == Calculator::divZero) {
+//            ui->labelERROR->setText("Ошибка при делении на ноль");
+//            correctly = 0;
+//        }
+//    }
+
     if (operation == "/") {
         if (ui->display->text().toDouble() == 0) {
-            ui->labelERROR->setText("E");
+            ui->labelERROR->setText("Ошибка при делении на ноль");
             num.setValue(0);
         } else
         num /= ui->display->text().toDouble();
@@ -207,7 +218,7 @@ void MainWindow::on_pushButton_ln_clicked()
     str = ui->display->text();
     num.setValue(str.toDouble());
     if (num.getValue() <= 0) {
-        ui->labelERROR->setText("E");
+        ui->labelERROR->setText("Данные введены неверно");
         return;
     }
     ui->display->setText(QString::number(num.lnValue()));
@@ -227,7 +238,7 @@ void MainWindow::on_pushButton_sqrt_clicked()
     str = ui->display->text();
     num.setValue(str.toDouble());
     if (num.getValue() < 0) {
-        ui->labelERROR->setText("E");
+        ui->labelERROR->setText("Данные введены неверно");
         return;
     }
     ui->display->setText(QString::number(num.sqrtValue()));
