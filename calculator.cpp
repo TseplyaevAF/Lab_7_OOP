@@ -30,7 +30,7 @@ void Calculator::operator *=(double value1) {
 }
 
 void Calculator::operator /=(double value1) {
-    if (value1 == 0) throw divZero;
+    if (value1 == 0.0) throw divZero;
     setValue(value / value1);
 }
 
@@ -49,16 +49,16 @@ double Calculator::lnValue() {
 }
 
 double Calculator::sinValue() {
-    return sin(value * M_PI/180); // вернуть значения в градусах
+    return sin(value * M_PI/180); // вернуть значение в градусах
 }
 
 double Calculator::cosValue() {
     value = value * M_PI/180;
-    return cos(value); // вернуть значения в градусах
+    return cos(value); // вернуть значение в градусах
 }
 
 double Calculator::tgValue() {
-    return tan(value * M_PI/180); // вернуть значения в градусах
+    return tan(value * M_PI/180); // вернуть значение в градусах
 }
 
 double Calculator::powValue(double power) {

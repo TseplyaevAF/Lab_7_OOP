@@ -82,7 +82,7 @@ void MainWindow::on_pushButton_0_clicked()
 
 void MainWindow::on_CE_clicked()
 {
-    if (num.getValue() != 0)
+    if (num.getValue() != 0.0)
         num.setValue(0);
     ui->display->setText("0");
     ui->labelHistory->setText("");
@@ -94,7 +94,7 @@ void MainWindow::on_erase_clicked()
 {
     QString str;
     str = ui->display->text();
-    unsigned size = str.size();
+    int size = str.size();
     str.resize(size-1);
     if (str == "") str = "0";
     ui->display->setText(str);
@@ -120,7 +120,6 @@ void MainWindow::on_pushButton_add_clicked()
     flag = 1;
     num.setValue(ui->display->text().toDouble());
     operation = "+";
-   // ui->display->setText("0");
 }
 
 void MainWindow::checkOperation() {
@@ -133,31 +132,17 @@ void MainWindow::checkOperation() {
     if (operation == "*")
         num *= ui->display->text().toDouble();
 
-//    try {
-//        if (operation == "/") {
-//            num /= ui->display->text().toDouble();
-//            correctly = 1;
-//        }
-//    } catch (Calculator::ERRORS e) {
-//        if (e == Calculator::divZero) {
-//            ui->labelERROR->setText("Ошибка при делении на ноль");
-//            correctly = 0;
-//        }
-//    }
-
-    if (operation == "/") {
-        if (ui->display->text().toDouble() == 0) {
+    try {
+        if (operation == "/") {
+            num /= ui->display->text().toDouble();
+        }
+    } catch (Calculator::ERRORS e) {
+        if (e == Calculator::divZero)
             ui->labelERROR->setText("Ошибка при делении на ноль");
-            num.setValue(0);
-        } else
-        num /= ui->display->text().toDouble();
     }
 
-    if (operation == "pow") {
-       double res;
-       res = num.powValue(ui->display->text().toDouble());
-       num.setValue(res);
-    }
+    if (operation == "pow")
+       num.setValue(num.powValue(ui->display->text().toDouble()));
 }
 
 //void MainWindow::setHistory(QPushButton *button) {
@@ -183,7 +168,6 @@ void MainWindow::on_pushButton_sub_clicked()
     ui->pushButton_sub->setDefault(1);
     num.setValue(ui->display->text().toDouble());
     operation = "-";
-    //ui->display->setText("0");
 }
 
 void MainWindow::on_pushButton_mul_clicked()
@@ -192,7 +176,6 @@ void MainWindow::on_pushButton_mul_clicked()
     ui->pushButton_mul->setDefault(1);
     num.setValue(ui->display->text().toDouble());
     operation = "*";
-    //ui->display->setText("0");
 }
 
 void MainWindow::on_pushButton_div_clicked()
@@ -201,7 +184,6 @@ void MainWindow::on_pushButton_div_clicked()
     ui->pushButton_div->setDefault(1);
     num.setValue(ui->display->text().toDouble());
     operation = "/";
-    //ui->display->setText("0");
 }
 
 void MainWindow::on_pushButton_exp_clicked()
@@ -217,11 +199,14 @@ void MainWindow::on_pushButton_ln_clicked()
     QString str;
     str = ui->display->text();
     num.setValue(str.toDouble());
-    if (num.getValue() <= 0) {
-        ui->labelERROR->setText("Данные введены неверно");
-        return;
+
+    try {
+        num.setValue(num.lnValue());
+        ui->display->setText(QString::number(num.getValue()));
+    } catch (Calculator::ERRORS e) {
+        if (e == Calculator::negativeNumber)
+            ui->labelERROR->setText("Данные введены неверно");
     }
-    ui->display->setText(QString::number(num.lnValue()));
 }
 
 void MainWindow::on_pushButton_yx_clicked()
@@ -272,6 +257,6 @@ void MainWindow::on_pushButton_tan_clicked()
 {
     QString str;
     str = ui->display->text();
-    num.setValue(str.toDouble());
+    num.setValue(ui->display->text().toDouble());
     ui->display->setText(QString::number(num.tgValue()));
 }
