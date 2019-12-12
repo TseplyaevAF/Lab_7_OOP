@@ -6,6 +6,10 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->history->setVisible(0);
+    ui->delete_history->setVisible(0);
+    ui->pushButton_H->setIcon(QIcon("history.png"));
+    ui->pushButton_H->setIconSize(QSize(5, 5));
 }
 
 MainWindow::~MainWindow()
@@ -80,12 +84,11 @@ void MainWindow::on_pushButton_0_clicked()
     addLabel(ui->pushButton_0, ui->display);
 }
 
-void MainWindow::on_CE_clicked()
+void MainWindow::on_C_clicked()
 {
     if (num.getValue() != 0.0)
         num.setValue(0);
     ui->display->setText("0");
-    ui->labelHistory->setText("");
     operation = "";
     ui->labelERROR->setText("");
 }
@@ -114,14 +117,6 @@ void MainWindow::on_pushButton_sign_clicked()
    ui->display->setText(QString::number(res));
 }
 
-void MainWindow::on_pushButton_add_clicked()
-{
-    ui->pushButton_add->setDefault(1);
-    flag = 1;
-    num.setValue(ui->display->text().toDouble());
-    operation = "+";
-}
-
 void MainWindow::checkOperation() {
     if (operation == "+")
         num += ui->display->text().toDouble();
@@ -145,10 +140,6 @@ void MainWindow::checkOperation() {
        num.setValue(num.powValue(ui->display->text().toDouble()));
 }
 
-//void MainWindow::setHistory(QPushButton *button) {
-//    ui->labelHistory->setText(ui->labelHistory->text() + ui->display->text() + " " + button->text() + " ");
-//}
-
 void MainWindow::on_pushButton_equally_clicked()
 {
     checkOperation();
@@ -160,6 +151,14 @@ void MainWindow::on_pushButton_equally_clicked()
     ui->display->setText(QString::number(num.getValue()));
     operation = "";
     flag = 0;
+}
+
+void MainWindow::on_pushButton_add_clicked()
+{
+    ui->pushButton_add->setDefault(1);
+    flag = 1;
+    num.setValue(ui->display->text().toDouble());
+    operation = "+";
 }
 
 void MainWindow::on_pushButton_sub_clicked()
@@ -191,7 +190,9 @@ void MainWindow::on_pushButton_exp_clicked()
     QString str;
     str = ui->display->text();
     num.setValue(str.toDouble());
-    ui->display->setText(QString::number(num.exprValue()));
+    num.setValue(num.exprValue());
+    ui->display->setText(QString::number(num.getValue()));
+    setHistory(ui->pushButton_exp, str);
 }
 
 void MainWindow::on_pushButton_ln_clicked()
@@ -203,6 +204,7 @@ void MainWindow::on_pushButton_ln_clicked()
     try {
         num.setValue(num.lnValue());
         ui->display->setText(QString::number(num.getValue()));
+        setHistory(ui->pushButton_ln, str);
     } catch (Calculator::ERRORS e) {
         if (e == Calculator::negativeNumber)
             ui->labelERROR->setText("Данные введены неверно");
@@ -222,11 +224,15 @@ void MainWindow::on_pushButton_sqrt_clicked()
     QString str;
     str = ui->display->text();
     num.setValue(str.toDouble());
-    if (num.getValue() < 0) {
-        ui->labelERROR->setText("Данные введены неверно");
-        return;
+
+    try {
+        num.setValue(num.sqrtValue());
+        ui->display->setText(QString::number(num.getValue()));
+        setHistory(ui->pushButton_sqrt, str);
+    } catch (Calculator::ERRORS e) {
+        if (e == Calculator::negativeNumber)
+            ui->labelERROR->setText("Данные введены неверно");
     }
-    ui->display->setText(QString::number(num.sqrtValue()));
 }
 
 void MainWindow::on_pushButton_x2_clicked()
@@ -234,7 +240,9 @@ void MainWindow::on_pushButton_x2_clicked()
     QString str;
     str = ui->display->text();
     num.setValue(str.toDouble());
-    ui->display->setText(QString::number(num.sqrValue()));
+    num.setValue(num.sqrValue());
+    ui->display->setText(QString::number(num.getValue()));
+    ui->history->append(str + "² = " + QString::number(num.getValue()));
 }
 
 void MainWindow::on_pushButton_sin_clicked()
@@ -259,4 +267,20 @@ void MainWindow::on_pushButton_tan_clicked()
     str = ui->display->text();
     num.setValue(ui->display->text().toDouble());
     ui->display->setText(QString::number(num.tgValue()));
+}
+
+void MainWindow::on_pushButton_H_clicked()
+{
+    open = !open;
+    ui->history->setVisible(open);
+    ui->delete_history->setVisible(open);
+}
+
+void MainWindow::on_delete_history_clicked()
+{
+    ui->history->setText("");
+}
+
+void MainWindow::setHistory(QPushButton *button, QString str) {
+    ui->history->append(button->text() + " " + str + " = " + QString::number(num.getValue()));
 }

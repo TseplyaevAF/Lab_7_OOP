@@ -5,6 +5,7 @@
 #include "calculator.h"
 #include <QPushButton>
 #include <QLabel>
+#include <QIcon>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -39,7 +40,7 @@ private slots:
 
     void on_pushButton_0_clicked();
 
-    void on_CE_clicked();
+    void on_C_clicked();
 
     void on_erase_clicked();
 
@@ -73,19 +74,25 @@ private slots:
 
     void on_pushButton_tan_clicked();
 
+    void on_pushButton_H_clicked();
+
+    void on_delete_history_clicked();
+
 private:
     Ui::MainWindow *ui;
     // переменная для вычислений
     Calculator num;
     // переменная для определения операции
     QString operation;
-    bool flag = 0;
+    bool flag = 0,
+    note = 0, // для добавления в историю вычислений
+    open = 0; // для открытия и закрытия поля history
     // функция добавления текста на экран
     void addLabel(QPushButton *button,QLabel *label);
     // функция для проверки операции
     void checkOperation();
-    // функция записи операции в labelHistory
-    void setHistory(QPushButton *button);
+    // функция для добавления операций в поле history
+    void setHistory(QPushButton *button, QString str);
 
 };
 #endif // MAINWINDOW_H
