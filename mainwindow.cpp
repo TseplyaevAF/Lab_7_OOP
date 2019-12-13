@@ -8,8 +8,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     ui->history->setVisible(0);
     ui->delete_history->setVisible(0);
-    ui->pushButton_H->setIcon(QIcon("history.png"));
-    ui->pushButton_H->setIconSize(QSize(5, 5));
+//    ui->pushButton_H->setIcon(QIcon("history.png"));
+//    ui->pushButton_H->setIconSize(QSize(5, 5));
 }
 
 MainWindow::~MainWindow()
@@ -250,7 +250,9 @@ void MainWindow::on_pushButton_sin_clicked()
     QString str;
     str = ui->display->text();
     num.setValue(str.toDouble());
-    ui->display->setText(QString::number(num.sinValue()));
+    num.setValue(num.sinValue());
+    ui->display->setText(QString::number(num.getValue()));
+    setHistory(ui->pushButton_sin, str);
 }
 
 void MainWindow::on_pushButton_cos_clicked()
@@ -258,15 +260,19 @@ void MainWindow::on_pushButton_cos_clicked()
     QString str;
     str = ui->display->text();
     num.setValue(str.toDouble());
-    ui->display->setText(QString::number(num.cosValue()));
+    num.setValue(num.cosValue());
+    ui->display->setText(QString::number(num.getValue()));
+    setHistory(ui->pushButton_cos, str);
 }
 
 void MainWindow::on_pushButton_tan_clicked()
 {
     QString str;
     str = ui->display->text();
-    num.setValue(ui->display->text().toDouble());
-    ui->display->setText(QString::number(num.tgValue()));
+    num.setValue(str.toDouble());
+    num.setValue(num.tgValue());
+    ui->display->setText(QString::number(num.getValue()));
+    setHistory(ui->pushButton_tan, str);
 }
 
 void MainWindow::on_pushButton_H_clicked()
